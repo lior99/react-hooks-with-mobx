@@ -1,0 +1,25 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.counter-container {
+	font-size: 16px;
+
+	.counter {
+		font-size: 3em;
+		padding-left: 1.375em;
+	}
+
+	.button {
+		background: #00bfff;
+		color: #fff;
+		font-size: 2em;
+		border: none;
+		cursor: pointer;
+		height: 2.188em;
+		width: 3.125em;
+		margin: 0.625em;
+	}
+}

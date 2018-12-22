@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import Counter from './components/Counter/Counter';
+import CounterStore from './store/CounterStore';
+import {Observer} from 'mobx-react';
+import './style.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+	const {counter, inc, dec} = CounterStore;
+
+	return (
+		<div className="App">
+			<Observer>
+				{() => {
+					const {counter, inc, dec, reset} = CounterStore;
+					return <Counter counter={counter} inc={inc} dec={dec} reset={reset} />;
+				}}
+			</Observer>
+		</div>
+	);
+};
 
 export default App;
