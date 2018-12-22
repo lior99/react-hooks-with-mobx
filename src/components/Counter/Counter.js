@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Observer, observer} from 'mobx-react';
 
-const Counter = observer(props => {
+const Counter = props => {
 	const {counter, inc, dec, reset} = props;
+	const [className, setClassName] = useState('');
+
+	useEffect(() => {
+		if (props.counter % 2 === 0) {
+			setClassName('counter even');
+		} else {
+			setClassName('counter odd');
+		}
+	});
 
 	return (
 		<div className="counter-container">
-			<div className="counter">{counter}</div>
+			<div className={className}>{counter}</div>
 			<button className="button" onClick={inc}>
 				+
 			</button>
@@ -18,6 +27,6 @@ const Counter = observer(props => {
 			</button>
 		</div>
 	);
-});
+};
 
 export default Counter;
